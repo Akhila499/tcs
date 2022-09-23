@@ -6,36 +6,21 @@ import { getUsers } from '../app/usersSlice'
 export const Users = () => {
   const dispatch = useDispatch()
   const { results, loading, error } = useSelector((state) => state.users)
-  
-  const [selected, setSelected] = useState()
+  console.log('ressults', results)
+
   const [index, setIndex] = useState(0);
-  const [disMovies, setDisMovies] = useState([]);
-  const [dataApi, setDataApi]= useState('');
+  const [arrayOfMovieLinks, setArrayOfMovieLinks] = useState([])
+
   let displayList=[];
+  
   const getListOfMovies = (results, index) => {
     let arrMovieLinks = [];
-    // let moName= [];
-    // const fetchData = async (url) => {
-    //   try {
-    //     const res = await axios.get(url)
-    //     setDataApi(res.data.title);
-    //     console.log('retreview movie',res.data.title)
-    //   }catch(err){
-    //     console.error(err);
-    //   }
-    // }
     console.log("--->",results, index)
     if(results[index]){
       results[index]["films"].map(result => {
         arrMovieLinks.push(result)
-        return
       })
     }
-    
-    // arrMovieLinks.map((ele)=>{
-    //   console.log("😎jklsdfljlll-----", dataApi);
-    //   moName.push(fetchData(ele));
-    // })
     return arrMovieLinks;
   }
   
@@ -43,22 +28,20 @@ export const Users = () => {
   
   useEffect(() => {
     dispatch(getUsers())
-    
   }, [dispatch])
-  
-  useEffect(()=>{
-    if(results && index){
-      getListOfMovies(results, index);
-      displayList = getListOfMovies(results, index);
-      console.log('testing',displayList)
-    }
-  },[index])
-  
+
   const handleChange = (e) =>{
-    setIndex(e.target.value)
+    console.log('handlechange', e.target.value)
+    setIndex(e.target.value);
+    let Links = getListOfMovies(results, e.target.value);
+    console.log('@@@@@',Links)
+    setArrayOfMovieLinks(Links);
+    
   }
 
-
+  const renderList = arrayOfMovieLinks.map((item,i) => 
+                             <div key={i}>{item}</div>
+                           );
   let content
   
   if (loading === 'pending') {
@@ -73,15 +56,17 @@ export const Users = () => {
   if (loading === 'idle') {
     content = (
       <div>
-        <select onChange={(e)=>handleChange(e)}>
+        <select value={index || " "} onChange={(e)=>handleChange(e)}>
+          <option defaultValue>
+            {'Please Select'}
+          </option>
           {results.map((items,i)=>{
             return <option key={i} value={i}>{items.name}</option>
           })}
         </select>
         <div>
           checking
-          <br/>
-          {displayList ? displayList.map((ele)=>{return <p>"dls lsjd lksj "</p>}): "some text"}
+          {renderList}
         </div>
       </div>
     )
