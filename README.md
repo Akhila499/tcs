@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Swapi.dev
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is to learning making api calls and render the data appropriately adding some data manipulations.
 
-## Available Scripts
+## Technology Scripts
 
-In the project directory, you can run:
+
 
 ### `npm start`
 

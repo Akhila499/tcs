@@ -14,16 +14,16 @@
 }
 .select-class select{
   width: 24rem;
-    padding: 0.8em 0.8em;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    color: #565353;
-    border: 1px solid #ccc;
-    margin: 0 1em;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
-    -webkit-appearance: none;
-    background-position-x: 22em;
+  padding: 0.8em 0.8em;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  color: #565353;
+  border: 1px solid #ccc;
+  margin: 0 1em;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
+  -webkit-appearance: none;
+  background-position-x: 22em;
 }
 
 .movie-list-css h6{

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../app/usersSlice'
 
@@ -14,9 +14,15 @@ export const Users = () => {
   const [films, setFilms] = useState();
   const [movieNames, setMovieNames] = useState();
   const [lastMovieActed, setLastMovieActed] = useState();
-
-  let displayList=[];
   
+  useEffect(() => {
+    getFilmsData();
+  },[index])
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch])
+
   const getListOfMovies = (results, index) => {
     let arrMovieLinks = [];
     console.log("--->",results, index)
@@ -29,31 +35,18 @@ export const Users = () => {
   }
 
 
-// // the useEffect is only there to call `fetchData` at the right time
-// useEffect(() => {
-//   fetchData()
-//     // make sure to catch any error
-//     .catch(console.error);;
-// }, [fetchData])
-
-useEffect(()=>{
-  getFilmsData();
-},[index])
-
-const getFilmsData = () => {
-  axios.get(`https://swapi.dev/api/films`)
-  .then(res=>{
-    const allFilms = res.data.results;
-    setFilms(allFilms);
-  })
-  .catch((err)=>{
-    console.log(`Errors`, err);
-  })
-
-}
+  const getFilmsData = () => {
+    axios.get(`https://swapi.dev/api/films`)
+    .then(res => {
+      const allFilms = res.data.results;
+      setFilms(allFilms);
+    })
+    .catch((err) => {
+      console.log(`Errors`, err);
+    })
+  }
 
   const getMovieTitles = (Links) => {
-    console.log('linkssdfdsfdsfsfsd', Links);
     let catchtest = [];
     let lastMovie = {};
     for(let i=0; i<Links.length; i++){
@@ -63,50 +56,26 @@ const getFilmsData = () => {
           catchtest.push(films[j]['title']);
           lastMovie[films[j]['title']]=films[j]["release_date"]
           break
-        }else{
-          continue;
         }
       }
-      
     }
-    let entries = Object.entries(lastMovie);
-    // [["you",100],["me",75],["foo",116],["bar",15]]
-    
+    let entries = Object.entries(lastMovie);    
     let sorted = entries.sort((b, a) => b[1] - a[1]);
-    console.log({catchtest}, sorted)
-// [["bar",15],["me",75],["you",100],["foo",116]]
-    setMovieNames(catchtest);
-    console.log('testeste',sorted[sorted.length - 1])
     let lastMovieActed = sorted[sorted.length - 1];
     return {catchtest, lastMovieActed};
   }
 
-  
-  
- 
-  
-  useEffect(() => {
-    dispatch(getUsers())
-  }, [dispatch])
-
-
-
-  const handleChange = (e) =>{
-    console.log('handlechange', e.target.value)
+  const handleChange = (e) => {
     setIndex(e.target.value);
     let Links = getListOfMovies(results, e.target.value);
-    console.log('@@@@@',Links)
     setArrayOfMovieLinks(Links);
     let {catchtest, lastMovieActed} = getMovieTitles(Links);
     setMovieNames(catchtest);
-    console.log('lastttttt', catchtest)
     setLastMovieActed(lastMovieActed);
-    console.log('last@@@@@@', lastMovieActed)
-
   }
 
   let content
-  
+    
   if (loading === 'pending') {
     content = (
       <div className="d-flex justify-content-center">
@@ -116,6 +85,7 @@ const getFilmsData = () => {
       </div>
     )
   }
+
   if (loading === 'idle') {
     content = (
       <div className='select-class'>
@@ -140,6 +110,7 @@ const getFilmsData = () => {
       </div>
     )
   }
+
   if (error !== null) {
     content = (
       <div className="alert alert-danger" role="alert">
@@ -147,6 +118,8 @@ const getFilmsData = () => {
       </div>
     )
   }
+
   return <div className='total'><p>Please select any character from below:</p>{content}</div>
 }
+
 export default Users
