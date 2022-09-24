@@ -51,7 +51,6 @@ export const Users = () => {
     let lastMovie = {};
     for(let i=0; i<Links.length; i++){
       for(let j=0; j<Links.length; j++){
-        console.log('inside', Links[i], films[j]['url'])
         if(Links[i] === films[j]['url']){
           catchtest.push(films[j]['title']);
           lastMovie[films[j]['title']]=films[j]["release_date"]
