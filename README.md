@@ -6,6 +6,7 @@ This project is to show how to making api calls and render the data appropriatel
 
 ![HomePage](https://github.com/Akhila499/tcs/blob/main/public/Picture-tcs.png)
 
+![](https://github.com/Akhila499/tcs/blob/main/public/tcs.gif)
 ## Getting Started
 
 In the project directory, you can run:
