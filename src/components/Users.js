@@ -103,10 +103,8 @@ const getFilmsData = () => {
     setLastMovieActed(lastMovieActed);
     console.log('last@@@@@@', lastMovieActed)
 
-
   }
 
-  // const renderList = 
   let content
   
   if (loading === 'pending') {
@@ -120,7 +118,7 @@ const getFilmsData = () => {
   }
   if (loading === 'idle') {
     content = (
-      <div>
+      <div className='select-class'>
         <select value={index || " "} onChange={(e)=>handleChange(e)}>
           <option defaultValue>
             {'Please Select'}
@@ -129,12 +127,13 @@ const getFilmsData = () => {
             return <option key={i} value={i}>{items.name}</option>
           })}
         </select>
-        <div>
-          {movieNames ? movieNames.map((item,i) => 
-                             <div key={i}>{item}</div>
-                           ) : "Please select the Charactors to view List of Movies" }
+        <div className='movie-list-css'>
+          {movieNames ? <h6>List of Movies acted by above selected character</h6> : ""}
+          {movieNames ?  movieNames.map((item,i) => 
+            <div key={i}>{item}</div>
+          ) : "Please select the Charactors to view List of Movies" }
         </div>
-        <div>
+        <div className='movie-list-css'>
           <h6>Last Movie Acted - Name and Date</h6>
           {lastMovieActed ? lastMovieActed[0] + " - " + lastMovieActed[1] : " "}
         </div>
@@ -148,6 +147,6 @@ const getFilmsData = () => {
       </div>
     )
   }
-  return <div>{content}</div>
+  return <div className='total'><p>Please select any character from below:</p>{content}</div>
 }
 export default Users

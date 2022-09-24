@@ -1,0 +1,35 @@
+.App{
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+.total{
+  text-align: center;
+  box-shadow: 3px 10px 24px -16px rgb(0 0 0 / 82%);
+  display: inline-block;
+  border: 1px solid #f4eded;
+  padding: 2em;
+}
+.total p {
+  text-transform: capitalize;
+}
+.select-class select{
+  width: 24rem;
+    padding: 0.8em 0.8em;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    color: #565353;
+    border: 1px solid #ccc;
+    margin: 0 1em;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
+    -webkit-appearance: none;
+    background-position-x: 22em;
+}
+
+.movie-list-css h6{
+  margin: 1em;
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: underline;
+  color: #707070;
+}

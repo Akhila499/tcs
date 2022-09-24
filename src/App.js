@@ -4,7 +4,7 @@ import Users from './components/Users';
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <h1>Swapi.dev</h1>
       <Users/>
     </div>
   );
