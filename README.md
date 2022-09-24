@@ -4,7 +4,7 @@ This project is to show how to making api calls and render the data appropriatel
 
 ### Screenshort of the project
 
-[HomePage](https://github.com/Akhila499/tcs/blob/main/public/Picture-tcs.png);
+HomePage[https://github.com/Akhila499/tcs/blob/main/public/Picture-tcs.png]
 
 ## Getting Started
 
