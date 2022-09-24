@@ -1,10 +1,14 @@
-# Swapi.dev
+## Swapi.dev
 
-This project is to learning making api calls and render the data appropriately adding some data manipulations.
+This project is to show how to making api calls and render the data appropriately adding some data manipulations using Reactjs, Redux frameworks
 
-## Technology Scripts
+### Screenshort of the project
 
+[HomePage](https://github.com/Akhila499/tcs/blob/main/public/Picture-tcs.png);
 
+## Getting Started
+
+In the project directory, you can run:
 
 ### `npm start`
 
